@@ -1,8 +1,10 @@
-# SecApi
+# SEC-API
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sec_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+**This gem is still in development and may not be functional.**
 
-TODO: Delete this and the text above, and describe your gem
+The SEC-API gem provides an unofficial API wrapper for The [SEC API](https://sec-api.io/).
+
+Note: You may need to purchase a subscription to use the API.
 
 ## Installation
 
@@ -24,8 +26,12 @@ Or install it yourself as:
 
 ```ruby
 client = SecApi::Client.new(api_key: ENV['SECAPI_API_KEY'])
-query = {}
-client.get_filings(query)
+params = {
+    "query": { "query_string":
+        { "query": "cik:320193 AND filedAt:{2016-01-01 TO 2016-12-31} AND formType:\"10-Q\"" }
+    }
+}
+client.query.list(params)
 ```
 
 ## Development
